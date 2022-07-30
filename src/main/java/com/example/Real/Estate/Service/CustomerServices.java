@@ -32,7 +32,7 @@ public class CustomerServices {
     private  final CustomerRepository customerRepository;
     private final ModelMapper modelMapper;
     private  final UserRepository userRepository;
-private  SecureRandom random;
+    //private  SecureRandom random;
     @Autowired
     public List<CustomerResponseDto> getCustomer() {
         List<Customer> customers=customerRepository.findAll();
