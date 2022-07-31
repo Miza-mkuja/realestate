@@ -29,12 +29,24 @@ public class HouseServices {
     private final ModelMapper modelMapper;
     //private final BookingRepository bookingRepository;
 
-    @Autowired
+
     public List<HouseResponseDto> getHouse() {
         List<House> houses = houseRepository.findAll();
-        List list = new ArrayList();
+        List<HouseResponseDto> list = new ArrayList();
         for (House house : houses) {
-            list.add(modelMapper.map(house, HouseResponseDto.class));
+            HouseResponseDto hr = new HouseResponseDto();
+            hr.setHouseId(house.getHouseId());
+            hr.setHouseNo(house.getHouseNo());
+            hr.setHouseStatus(house.getHouseStatus());
+            hr.setCity(house.getCity());
+            hr.setAddress(house.getAddress());
+            hr.setPrice(house.getPrice());
+            hr.setType(house.getType());
+            hr.setBlockNo(house.getBlockNo());
+            hr.setSize(house.getSize());
+            hr.setFloorNo(house.getFloorNo());
+            hr.setPic(house.getPic());
+            list.add(hr);
         }
         return list;
     }
@@ -86,6 +98,7 @@ public class HouseServices {
         if (!house1.isPresent()) {
             throw new IllegalStateException("House with Id " + house_id + "Does Not exist");
         }
+
        // Booking booking = bookingOptional.get();
         House house = house1.get();
         house.setBlockNo(dto.getBlockNo());
@@ -97,7 +110,7 @@ public class HouseServices {
         house.setAddress(dto.getAddress());
         house.setCity(dto.getCity());
         house.setHouseStatus(dto.getHouseStatus());
-        house.setPic(dto.getPic());
+        house.setPic(house.getPic());
         houseRepository.save(house);
         Map map = new HashMap<String, Boolean>();
         map.put("response", Boolean.TRUE);

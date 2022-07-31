@@ -16,6 +16,6 @@ public class HouseRequestDto {
     private String address;
     private String city;
     private String houseStatus;
-    private byte[] pic;
+    private String pic;
 
 }

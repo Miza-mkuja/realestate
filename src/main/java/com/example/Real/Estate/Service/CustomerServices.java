@@ -32,6 +32,7 @@ public class CustomerServices {
     private  final CustomerRepository customerRepository;
     private final ModelMapper modelMapper;
     private  final UserRepository userRepository;
+
     //private  SecureRandom random;
     @Autowired
     public List<CustomerResponseDto> getCustomer() {
@@ -87,6 +88,9 @@ public class CustomerServices {
             throw new IllegalStateException("Customer with Id "+ customerId+" does not exist");
         }
         customerRepository.deleteById(customerId);
+    }
+    public Long countAllCustomers(){
+        return customerRepository.count();
     }
 
     public Object update(Long customer_id, CustomerRequestDto dto) {

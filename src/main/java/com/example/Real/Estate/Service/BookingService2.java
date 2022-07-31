@@ -56,6 +56,17 @@ public class BookingService2 {
         return list;
     }
 
+
+ public List<BookingRespoDto> getAllWhoPayed(){
+        List<Booking> bookings=bookingRepository.findByStatusPayment(1);
+        List list = new ArrayList();
+        for (Booking booking:bookings)
+        {
+            list.add(modelMapper.map(booking, BookingRespoDto.class));
+        }
+        return list;
+    }
+
     public ResponseEntity payment(int receiptNo,Long bookingId){
         Optional<Booking> findById=bookingRepository.findById(bookingId);
         if(!findById.isPresent()){

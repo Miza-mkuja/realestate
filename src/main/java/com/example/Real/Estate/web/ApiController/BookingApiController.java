@@ -48,6 +48,11 @@ public class BookingApiController implements BookingApi {
         return ResponseEntity.ok().body(bookingServices.payment(recieptNo,booking_id));
     }
 
+    @Override
+     public ResponseEntity getAllWhoPayed() {
+        return ResponseEntity.ok().body(bookingServices.getAllWhoPayed());
+    }
+
 
     @Override
     public ResponseEntity<BookingRespoDto> getBookingById(Long booking_id) {

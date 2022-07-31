@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Optional;
 
 @Data
@@ -32,6 +33,7 @@ import java.util.Optional;
 public class HouseApiController implements HouseApi {
     @Autowired
     private ModelMapper modelMapper;
+
     @Autowired
     HouseServices houseServices;
 
@@ -57,6 +59,7 @@ public class HouseApiController implements HouseApi {
         if (!optionalHouse.isPresent()) {
             throw new IllegalStateException("House with Id " + house_id + "Does Not Exist");
         }
+
         House house = optionalHouse.get();
         HouseResponseDto response = new HouseResponseDto();
         response.setHouseId(house.getHouseId());

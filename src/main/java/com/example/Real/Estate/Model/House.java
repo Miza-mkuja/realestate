@@ -37,7 +37,8 @@ public class House {
     private String address;
     private String city;
     private String houseStatus;
-    private byte[] pic;
+    @Lob
+    private String pic;
 
 
 //    @OneToOne

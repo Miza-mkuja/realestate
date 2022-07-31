@@ -29,8 +29,12 @@ public interface BookingApi {
     @RequestMapping(value = "/{booking_id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<BookingRespoDto> getBookingById(@PathVariable Long booking_id);
 
+    @GetMapping("/all-paid")
+    public ResponseEntity getAllWhoPayed() ;
 
-    @RequestMapping(value = "/change-status/{booking_id}", method = RequestMethod.GET, produces = "application/json")
+
+
+        @RequestMapping(value = "/change-status/{booking_id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity changestatus(@PathVariable("booking_id") Long booking_id);
 
     @RequestMapping(value = "/get-payment/{statusPayment}/{customerId}", method = RequestMethod.GET, produces = "application/json")

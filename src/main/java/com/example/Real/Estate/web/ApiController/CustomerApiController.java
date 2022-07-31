@@ -1,5 +1,6 @@
 package com.example.Real.Estate.web.ApiController;
 
+import com.example.Real.Estate.Dto.CountDto;
 import com.example.Real.Estate.Dto.UserDto;
 import com.example.Real.Estate.web.Api.CustomerApi;
 import com.example.Real.Estate.Dto.CustomerRequestDto;
@@ -37,6 +38,12 @@ public class CustomerApiController implements CustomerApi {
     public ResponseEntity createCustomer(CustomerRequestDto dto) throws InvalidKeySpecException, NoSuchAlgorithmException {
 
         return  ResponseEntity.ok().body(customerServices.addNewCustomer(dto));
+    }
+    @Override
+    public ResponseEntity countCustomer() {
+        CountDto cd = new CountDto();
+        cd.setCustomerCount(customerServices.countAllCustomers());
+        return  ResponseEntity.ok().body(cd);
     }
 
     @Override

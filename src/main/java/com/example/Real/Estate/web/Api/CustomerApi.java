@@ -31,4 +31,7 @@ public interface CustomerApi {
     @RequestMapping(value = "/getAuth", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity auth(@RequestBody UserDto userDto);
 
+    @GetMapping("/count-customers")
+    public ResponseEntity countCustomer();
+
 }
